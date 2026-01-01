@@ -14,7 +14,7 @@ A modern, responsive, and multi-lingual (English, Marathi, Hindi) frontend templ
 * **SPA Root:** Home page uses dynamic rendering for a smoother user experience.
 
 ## 🚀 Live Demo
-[Insert your GitHub Pages link here, e.g., https://yourusername.github.io/your-repo-name/]
+[https://tanmaybamdale.github.io/Maha-E-Seva-Kendra-Template/]
 
 ## 🛠️ Built With
 * **HTML5 & CSS3**
@@ -32,4 +32,5 @@ A modern, responsive, and multi-lingual (English, Marathi, Hindi) frontend templ
 ├── index.html           # Main entry point
 ├── about.html           # About page
 ├── services.html        # Services listing page
+
 └── ...
