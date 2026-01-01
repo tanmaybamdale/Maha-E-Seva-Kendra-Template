@@ -1,0 +1,152 @@
+/* Extracted from original <style> block */
+html { scroll-behavior: smooth; }
+.fade-in { animation: fadeIn 0.5s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* View transitions */
+.page-view {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+.page-view.active {
+    display: block;
+}
+
+.slide-active { opacity: 1; z-index: 10; }
+.slide-hidden { opacity: 0; z-index: 0; }
+
+/* Mega Menu Transition */
+.mega-menu {
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    transform-origin: top;
+}
+.group:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 3D Text Effect for Title (Updated to Saffron Primary) */
+.text-3d-tri {
+    color: #FF9933; /* Saffron Main */
+    text-shadow:
+        1px 1px 0px #ffffff,
+        2px 2px 0px #138808,
+        4px 4px 0px #000080,
+        5px 5px 3px rgba(0,0,0,0.3);
+}
+
+/* Custom Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: #FF9933;
+    border-radius: 4px;
+}
+
+/* Search Bar Focus Ring */
+.search-ring:focus-within {
+    box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.4);
+    border-color: #FF9933;
+}
+
+/* Play Button Overlay */
+.play-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s;
+}
+.group:hover .play-overlay {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Small helper: hide elements visually but keep accessible */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* Floating contact overlay - persistent on all pages */
+#contact-overlay {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  pointer-events: none; /* child buttons will enable pointer-events */
+}
+
+/* common button */
+.overlay-btn {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transform: translateY(0);
+  transition: transform .22s ease, opacity .18s ease;
+  opacity: 1;
+  font-size: 14px;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+}
+
+/* WhatsApp styling */
+.overlay-btn.wa-btn {
+  background: linear-gradient(180deg,#25D366, #128C7E);
+}
+
+/* Call styling */
+.overlay-btn.call-btn {
+  background: linear-gradient(180deg,#FF7A00, #C84300);
+}
+
+/* Icon only for very small screens - hide text */
+.overlay-text { display: inline-block; }
+
+/* Toggle button */
+.overlay-toggle {
+  pointer-events: auto;
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.35);
+  cursor: pointer;
+  transition: transform .18s ease, background .15s ease;
+}
+
+/* Hover effects */
+.overlay-toggle:hover { transform: translateY(-3px); }
+.overlay-btn:hover { transform: translateY(-4px); opacity: .98; }
+
+/* Collapsed state: hide the buttons but keep toggle */
+#contact-overlay.collapsed .overlay-btn { transform: translateY(10px); opacity: 0; pointer-events: none; }
+
+/* Accessibility focus styles */
+.overlay-btn:focus, .overlay-toggle:focus {
+  outline: 3px solid rgba(255,153,51,0.35);
+  outline-offset: 3px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  #contact-overlay { right: 12px; bottom: 12px; }
+  .overlay-text { display: none; } /* show icons only on very small screens */
+  .overlay-btn { padding: 10px; border-radius: 999px; }
+}
+/* fallback if Tailwind custom class did not generate */
+.bg-chakra { background-color: #000080 !important; }   /* navy */
+.text-chakra { color: #000080 !important; }

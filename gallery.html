@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery - Arya Enterprises</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="js/config.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+  <div id="<header class="sticky top-0 z-40 bg-white shadow-md border-t-4 border-primary">
+  <div class="container mx-auto px-4 py-2 flex justify-between items-center relative">
+    <div class="flex items-center gap-4 cursor-pointer py-1" onclick="navigateTo('home')">
+      <img src="images/logo.jpeg" onerror="this.src='https://placehold.co/120x120?text=images/logo'" alt="Arya Enterprises images/logo" class="h-20 w-auto object-contain transition-transform hover:scale-105">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-extrabold leading-none text-3d-tri tracking-wide" data-key="siteTitle">Arya Enterprises</h1>
+        <p class="text-xs text-secondary font-bold tracking-wider mt-1" data-key="siteSubtitle">E-Seva Kendra & Multi-Services</p>
+      </div>
+    </div>
+
+    <nav class="hidden lg:flex items-center gap-6 font-medium h-full text-chakra">
+      <button onclick="window.location.href='index.html'" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navIndex">
+      Home
+    </button> 
+    
+   <button onclick="window.location.href='about.html'" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navAbout">
+      About
+  </button>
+          <button onclick="window.location.href='gallery.html'" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navGallery">
+    Gallery
+  </button>
+          <button onclick="window.location.href='blog.html'" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navGallery">
+    Blog
+  </button>
+          <button onclick="window.location.href='contact.html'" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navContact">
+    Contact
+  </button>
+
+      <div class="group py-4">
+        <button class="hover:text-primary transition flex items-center gap-1 focus:outline-none cursor-pointer border-b-2 border-transparent hover:border-primary">
+          <span data-key="navServices">Services</span> <i class="fas fa-chevron-down text-xs"></i>
+        </button>
+        <div class="mega-menu absolute left-0 top-full w-full bg-white shadow-xl rounded-b-lg border-t-4 border-secondary p-8 opacity-0 invisible transform -translate-y-2 z-50">
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6" id="mega-menu-content">
+            <!-- injected by utils.renderMegaMenu() -->
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center bg-gray-50 -mx-8 -mb-8 p-4 rounded-b-lg">
+            <span class="text-xs text-gray-500 font-medium">Over 30+ Government & Legal Services Available</span>
+            <button onclick="navigateTo('services')" class="bg-primary text-white text-sm px-4 py-2 rounded shadow hover:bg-orange-600 transition">View All Services →</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <div class="relative">
+        <button onclick="toggleLangMenu()" class="flex items-center gap-2 text-sm font-bold text-chakra hover:text-primary transition border border-gray-200 px-3 py-1.5 rounded-full hover:border-primary">
+          <i class="fas fa-globe"></i> <span id="current-lang-label">EN</span> <i class="fas fa-caret-down"></i>
+        </button>
+        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-xl border overflow-hidden z-50">
+          <button onclick="changeLang('en')" class="block w-full text-left px-4 py-2 text-sm hover:bg-light hover:text-primary">English</button>
+          <button onclick="changeLang('mr')" class="block w-full text-left px-4 py-2 text-sm hover:bg-light hover:text-primary">मराठी</button>
+          <button onclick="changeLang('hi')" class="block w-full text-left px-4 py-2 text-sm hover:bg-light hover:text-primary">हिंदी</button>
+        </div>
+      </div>
+
+      <button class="lg:hidden text-2xl text-chakra" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-4 flex flex-col gap-2 shadow-lg border-b-4 border-secondary max-h-[80vh] overflow-y-auto">
+    <button onclick="navigateTo('home'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">Home</button>
+
+    <div class="border-b border-gray-100">
+      <button onclick="toggleMobileServices()" class="flex justify-between items-center w-full py-3 font-semibold text-chakra hover:text-primary">
+        <span>Services</span>
+        <i id="mobile-service-icon" class="fas fa-chevron-down transition-transform"></i>
+      </button>
+      <div id="mobile-services-list" class="hidden pl-4 pb-4 space-y-3 bg-gray-50 rounded-lg mb-2"></div>
+    </div>
+
+    <button onclick="navigateTo('gallery'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">Gallery</button>
+    <button onclick="navigateTo('about'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">About</button>
+    <button onclick="navigateTo('blog'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">Blog</button>
+    <button onclick="navigateTo('contact'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary">Contact</button>
+  </div>
+
+  <!-- START: Persistent WhatsApp + Call Overlay -->
+<div id="contact-overlay" aria-hidden="false">
+  <a id="wa-overlay" class="overlay-btn wa-btn" href="https://api.whatsapp.com/send?phone=917774946121" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="overlay-text">WhatsApp</span>
+  </a>
+
+  <a id="call-overlay" class="overlay-btn call-btn" href="tel:+917620346620" aria-label="Call us">
+    <i class="fas fa-phone-alt"></i>
+    <span class="overlay-text">Call</span>
+  </a>
+
+  <button id="overlay-toggle" class="overlay-toggle" aria-expanded="true" aria-controls="contact-overlay" aria-label="Toggle contact options">
+    <i class="fas fa-comments"></i>
+  </button>
+</div>
+<!-- END: Persistent WhatsApp + Call Overlay -->
+
+</header>
+</div>
+</div>
+
+  <main class="flex-grow">
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-chakra mb-2">Media Gallery</h2>
+          <p class="text-gray-500">Photos and videos of our services, processes, and office.</p>
+        </div>
+
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery-grid">
+          <!-- gallery items injected by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+   <!-- FOOTER (component loaded via JS) -->
+ <div id="footers"></div>
+
+  <script>
+    // js/include-footer.js
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("./components/footer.html")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Footer file not found");
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById("footers").innerHTML = data;
+        })
+        .catch(error => {
+          console.error("Error loading footer:", error);
+        });
+    });
+
+  </script>
+
+ <script src="js/data.js" defer></script>
+<script src="js/config.js" defer></script>
+<script src="js/utils.js" defer></script>
+<script src="js/script.js" defer></script>
+
+</body>
+</html>

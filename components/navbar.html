@@ -1,0 +1,76 @@
+<!-- components/navbar.html -->
+<header class="sticky top-0 z-40 bg-white shadow-md border-t-4 border-primary">
+  <div class="container mx-auto px-4 py-2 flex justify-between items-center relative">
+    <div class="flex items-center gap-4 cursor-pointer py-1" onclick="navigateTo('home')">
+      <img src="images/images/logo.png" onerror="this.src='https://placehold.co/120x120?text=images/logo'" alt="Arya Enterprises images/logo" class="h-20 w-auto object-contain transition-transform hover:scale-105">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-extrabold leading-none text-3d-tri tracking-wide" data-key="siteTitle">Arya Enterprises</h1>
+        <p class="text-xs text-secondary font-bold tracking-wider mt-1" data-key="siteSubtitle">E-Seva Kendra & Multi-Services</p>
+      </div>
+    </div>
+
+    <nav class="hidden lg:flex items-center gap-6 font-medium h-full text-chakra">
+      <button onclick="navigateTo('home')" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navHome">Home</button>
+      <button onclick="navigateTo('about')" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navAbout">About</button>
+
+      <!-- MEGA MENU TRIGGER -->
+      <div class="group py-4 relative">
+        <button class="hover:text-primary transition flex items-center gap-1 focus:outline-none cursor-pointer border-b-2 border-transparent hover:border-primary" data-key="navServices">
+          <span data-key="navServices">Services</span>
+          <i class="fas fa-chevron-down text-xs ml-1"></i>
+        </button>
+
+        <!-- Mega Menu Content injected by JS into #mega-menu-content -->
+        <div class="mega-menu absolute left-0 top-full w-full bg-white shadow-xl rounded-b-lg border-t-4 border-secondary p-8 opacity-0 invisible transform -translate-y-2 z-50">
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6" id="mega-menu-content">
+            <!-- renderMegaMenu() will inject columns here -->
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center bg-gray-50 -mx-8 -mb-8 p-4 rounded-b-lg">
+            <span class="text-xs text-gray-500 font-medium">Over 30+ Government & Legal Services Available</span>
+            <button onclick="navigateTo('services')" class="bg-primary text-white text-sm px-4 py-2 rounded shadow hover:bg-orange-600 transition">View All Services →</button>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="navigateTo('gallery')" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navGallery">Gallery</button>
+      <button onclick="navigateTo('blog')" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navBlog">Blog</button>
+      <button onclick="navigateTo('contact')" class="hover:text-primary transition py-4 focus:outline-none border-b-2 border-transparent hover:border-primary" data-key="navContact">Contact</button>
+    </nav>
+
+    <!-- Language & Mobile Toggle -->
+    <div class="flex items-center gap-4">
+      <!-- Language Dropdown -->
+      <div class="relative">
+        <button class="flex items-center gap-2 text-sm font-bold text-chakra hover:text-primary transition border border-gray-200 px-3 py-1.5 rounded-full hover:border-primary" aria-controls="lang-menu" aria-expanded="false" data-lang-toggle>
+          <i class="fas fa-globe"></i> <span id="current-lang-label">EN</span> <i class="fas fa-caret-down"></i>
+        </button>
+
+        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-36 bg-white rounded-lg shadow-xl border overflow-hidden z-50">
+          <button data-lang="en" class="block w-full text-left px-4 py-2 text-sm hover:bg-light hover:text-primary">English</button>
+          <button data-lang="mr" class="block w-full text-left px-4 py-2 text-sm hover:bg-light hover:text-primary">मराठी</button>
+          <button data-lang="hi" class="block w-full text-left px-4 py-2 text-sm hover:bg-light hover:text-primary">हिंदी</button>
+        </div>
+      </div>
+
+      <button class="lg:hidden text-2xl text-chakra" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-4 flex flex-col gap-2 shadow-lg border-b-4 border-secondary max-h-[80vh] overflow-y-auto">
+    <button onclick="navigateTo('home'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">Home</button>
+
+    <div class="border-b border-gray-100">
+      <button onclick="toggleMobileServices()" class="flex justify-between items-center w-full py-3 font-semibold text-chakra hover:text-primary">
+        <span>Services</span>
+        <i id="mobile-service-icon" class="fas fa-chevron-down transition-transform"></i>
+      </button>
+      <div id="mobile-services-list" class="hidden pl-4 pb-4 space-y-3 bg-gray-50 rounded-lg mb-2"></div>
+    </div>
+
+    <button onclick="navigateTo('gallery'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">Gallery</button>
+    <button onclick="navigateTo('about'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">About</button>
+    <button onclick="navigateTo('blog'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary border-b border-gray-100">Blog</button>
+    <button onclick="navigateTo('contact'); toggleMobileMenu()" class="text-left w-full py-3 font-semibold text-chakra hover:text-primary">Contact</button>
+  </div>
+</header>

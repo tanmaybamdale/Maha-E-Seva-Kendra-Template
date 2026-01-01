@@ -1,0 +1,71 @@
+ <footer class="bg-chakra text-white pt-16 pb-8 border-t-8 border-secondary relative overflow-hidden" id ="footer">
+  <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div>
+        <h4 class="text-xl font-extrabold mb-4 text-primary">Arya Enterprises</h4>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6">Your trusted partner for all government and legal documentation needs. We simplify the process of obtaining essential certificates, licenses, and online forms with expert guidance and transparency.</p>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition transform hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 hover:text-white transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-bold mb-4 text-white border-b-2 border-primary inline-block pb-1">Quick Links</h4>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li><button onclick="window.location.href='index.html'" class="hover:text-primary flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Home</button></li>
+          <li><button onclick="window.location.href='gallery.html'" class="hover:text-primary flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Gallery</button></li>
+          <li><button onclick="window.location.href='services.html'" class="hover:text-primary flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> All Services</button></li>
+          <li><button onclick="window.location.href='blog.html'" class="hover:text-primary flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Latest News</button></li>
+          <li><button onclick="window.location.href='contact.html'" class="hover:text-primary flex items-center gap-2"><i class="fas fa-angle-right text-xs"></i> Contact Support</button></li>
+        </ul>
+      </div>
+
+       <div>
+        <h4 class="text-lg font-bold mb-4 text-white border-b-2 border-secondary inline-block pb-1">Our Services</h4>
+        <ul class="space-y-3 text-sm text-gray-300z">
+          <li><a href="services.html" class="hover:text-secondary transition flex items-center gap-2"><i class="fas fa-id-card text-xs opacity-50"></i> Identity Documents</a></li>
+          <li><a href="services.html" onclick="filterServices('Business'); return false;" class="hover:text-secondary transition flex items-center gap-2"><i class="fas fa-store text-xs opacity-50"></i> Shop Act & Licenses</a></li>
+          <li><a href="services.html" onclick="filterServices('Certificates'); return false;" class="hover:text-secondary transition flex items-center gap-2"><i class="fas fa-file-contract text-xs opacity-50"></i> Govt Certificates</a></li>
+          <li><a href="services.html" onclick="filterServices('Financial'); return false;" class="hover:text-secondary transition flex items-center gap-2"><i class="fas fa-rupee-sign text-xs opacity-50"></i> Financial Services</a></li>
+          <li><a href="services.html" onclick="filterServices('Police/Legal'); return false;" class="hover:text-secondary transition flex items-center gap-2"><i class="fas fa-gavel text-xs opacity-50"></i> Legal Affidavits</a></li>
+        </ul>
+      </div>
+
+      <script>
+        function filterServices(cat){
+            alert(cat);
+            const grid = document.getElementById('services-grid');
+            if(!grid) {
+              // If not on services page, navigate
+              if (document.location.pathname.endsWith('services.html')) return;
+              return navigateTo('services');
+            }
+            const list = cat === 'all' ? servicesData : servicesData.filter(s => s.category === cat);
+            grid.innerHTML = list.map(createServiceCard).join('');
+          }
+      </script>
+
+      <div>
+        <h4 class="text-lg font-bold mb-4 text-white border-b-2 border-primary inline-block pb-1">Visit Us</h4>
+        <ul class="space-y-4 text-sm text-gray-300">
+          <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-primary"></i><span>B-81, Upper Ground, HDFC Bank, Below INOX, Jai Ganesh Vision, Akurdi, Pune – 411035</span></li>
+          <li class="flex items-center gap-3"><i class="fas fa-phone-alt text-secondary"></i><span>+91 7620346620</span></li>
+          <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i><span>sevainpcmc@gmail.com</span></li>
+          <li class="flex items-center gap-3"><i class="fas fa-clock text-gray-400"></i><span>Mon - Sat: 10 AM - 8 PM</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700 pt-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-gray-400">&copy; 2025 <span class="text-white font-bold">Arya Enterprises</span>. All Rights Reserved.</p>
+      <div class="flex gap-4 text-xs text-gray-500">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
